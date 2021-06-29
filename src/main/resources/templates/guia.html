@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Guia</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container" style='width: 450px; margin-top:25px; background-color: #13293E; padding: 15px; border-radius: 8px;'>
+			<form th:action="@{/guia/registrar}" method="post" th:object="${guia}">
+				<div class="form-group">
+					<label for="idguia" style='color:white;'>ID:</label>
+					<input type="text" class="form-control" th:field="*{idGuia}"></input>
+					
+					<div class="form-group">
+						<label for="nombreguia" style='color:white;'>Nombre:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{nombreGuia}" id="nombreguia"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreGuia')}" 
+							th:errors="*{nombreGuia}">						
+						</div>
+						
+						<label for="apellido" style='color:white;'>Apellidos:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{apellidoGuia}" id="apellido"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('apellidoGuia')}" 
+							th:errors="*{apellidoGuia}">						
+						</div>
+						
+						
+						<label for="dni" style='color:white;'>DNI:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{dniGuia}" id="dni"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniGuia')}" 
+							th:errors="*{dniGuia}">						
+						</div>
+						
+						<label for="celular" style='color:white;'>Celular:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{celularGuia}" id="celular"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('celularGuia')}" 
+							th:errors="*{celularGuia}">						
+						</div>
+						
+						<label for="email" style='color:white;'>Email:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{emailGuia}" id="email"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('emailGuia')}" 
+							th:errors="*{emailGuia}">						
+						</div>
+						
+					</div>
+				
+				</div>
+				
+				<button type="submit" class="btn btn-primary" style='margin-top:25px'>Aceptar</button>
+				<a href="/guia/listar" class="btn btn-danger" style='margin-top:25px'>Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+					<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Proveedor</title>
+		
+			<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container" style='width: 450px; margin-top:25px; background-color: #13293E; padding: 15px; border-radius: 8px;'>
+			<form th:action="@{/proveedor/registrar}" method="post" th:object="${proveedor}">
+				<div class="form-group">
+					<label for="idproveedor" style='color:white;'>ID:</label>
+					<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{idProveedor}"></input>
+					
+					<div class="form-group">
+						<label for="nombre" style='color:white;'>Nombre:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{nombreProveedor}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreProveedor')}" 
+							th:errors="*{nombreProveedor}">						
+						</div>
+						
+					
+						
+						<label for="ruc" style='color:white;'>RUC:</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{rucProveedor}" id="ruc" maxlength="11"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('rucProveedor')}" 
+							th:errors="*{rucProveedor}">						
+						</div>
+						
+						<label for="telefono" style='color:white;'>Telefono</label>
+						<input style='margin-bottom:20px;' type="text" class="form-control" th:field="*{telefonoProveedor}" id="telefono" maxlength="9"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('telefonoProveedor')}" 
+							th:errors="*{telefonoProveedor}">						
+						</div>
+						
+					</div>
+				
+				</div>
+				
+				<button type="submit" class="btn btn-primary" style='margin-top:25px'>Aceptar</button>
+				<a href="/proveedor/listar" class="btn btn-danger" style='margin-top:25px'>Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+		
+	</body>
+	
+</html>
